@@ -150,6 +150,32 @@ const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = people[index];
 
+  const checkNumber = number => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
+
+  const prevPerson = () => {
+    setIndex(curPerson => {
+      let changePerson = curPerson - 1;
+      return checkNumber(changePerson);
+    });
+  };
+
+  const nextPerson = () => {
+    setIndex(curPerson => {
+      let changePerson = curPerson + 1;
+      return checkNumber(changePerson);
+    });
+  };
+
+  const randomPerson = () => {};
+
   return (
     <article className='review'>
       <div className='img-container'>
@@ -161,6 +187,17 @@ const Review = () => {
       <h4 className='author'>{name}</h4>
       <p className='job'>{job}</p>
       <p className='text'>{text}</p>
+      <div className='btn-container'>
+        <button className='prev-btn' onClick={prevPerson}>
+          <FaChevronLeft />
+        </button>
+        <button className='next-btn' onClick={nextPerson}>
+          <FaChevronRight />
+        </button>
+        <button className='random-btn' onClick={randomPerson}>
+          Random
+        </button>
+      </div>
     </article>
   );
 };
