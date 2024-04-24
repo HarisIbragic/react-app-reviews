@@ -201,7 +201,7 @@ const Review = () => {
           <FaChevronRight />
         </button>
         <button className='random-btn' onClick={randomPerson}>
-          Random
+          Random person
         </button>
       </div>
     </article>
